@@ -1,0 +1,50 @@
+<!--
+Artemii Fridriksen
+174141234
+-->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Location</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <div class="w-full">
+
+        <div class="hero bg-base-200">
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                    <h1 class="text-4xl font-bold">Add a Location</h1>
+                    <p class="py-6">
+                        Add a new memorable location to your journal.
+                    </p>
+                </div>
+            </div>
+        </div> <div class="container mx-auto max-w-sm mt-4">
+             <form method="POST" action="/memories/add" class="px-8 pt-6 pb-8 flex flex-col">
+                
+                <input type="text" name="name" placeholder="Enter location name" class="input input-bordered w-full max-w-xs mb-4" required>
+                
+                <input type="text" name="address" placeholder="Enter location address" class="input input-bordered w-full max-w-xs mb-4" required>
+                
+                <select name="category" class="select select-bordered w-full max-w-xs mb-4" required>
+                    <option disabled selected>Choose a category</option>
+                    <option>Food</option>
+                    <option>Outdoors</option>
+                    <option>Events</option>
+                </select>
+                
+                <input type="text" name="image" placeholder="Enter image url" class="input input-bordered w-full max-w-xs mb-4" required>
+                
+                <textarea name="comments" class="textarea textarea-bordered mb-4" placeholder="What are your memories of this place?" required></textarea>
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

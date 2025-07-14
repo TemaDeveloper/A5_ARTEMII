@@ -1,0 +1,77 @@
+<!--
+Artemii Fridriksen
+174141234
+-->
+
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Journal</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+
+    <div class="hero min-h-screen"
+        style="background-image: url(https://images.unsplash.com/photo-1592701601033-c17588001fb8?q=80&amp;w=1200&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.1.0&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="hero-content text-neutral-content text-center">
+            <div class="max-w-lg">
+                <h1 class="mb-5 text-5xl font-bold">St. John's, Newfoundland</h1>
+                <p class="mb-5">
+                    St. John's is the perfect combination of big-city luxury and traditional small-town charm. It is
+                    one of the oldest and most easterly cities in North America, and has become a rare destination
+                    full of character and charisma, with a contemporary, sophisticated edge.
+                </p>
+            </div>
+        </div>
+    </div> <div class="container mx-auto my-6 gap-x-8">
+        <div class="flex justify-end mb-4">
+            <a href="/memories/add" class="btn btn-active btn-primary">Add Location</a>
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="table">
+                <thead>
+                    <tr class="bg-base-300">
+                        <th></th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Comments</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if(locations.length > 0) { %>
+                        <% locations.forEach(location => { %>
+                            <tr class="hover">
+                                <td>
+                                    <img src="<%= location.image %>" alt="<%= location.name %>" class="w-96">
+                                </td>
+                                <td>
+                                    <span class="font-bold"><%= location.name %></span>
+                                    <br>
+                                    <span class="badge badge-primary badge-sm badge-outline"><%= location.category %></span>
+                                </td>
+                                <td><%= location.address %></td>
+                                <td><%= location.comments %></td>
+                                <th>
+                                    <a href="/memories/delete/<%= location.id %>" class="btn btn-error btn-xs">delete</a>
+                                </th>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                           <td colspan="5" class="text-center">No locations found. Add one!</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
