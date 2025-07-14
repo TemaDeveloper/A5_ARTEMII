@@ -26,7 +26,8 @@ const app = express();
 app.use(express.static("public"));  
 app.set("view engine", "ejs");      //ejs
 app.use(express.urlencoded({ extended: true })); //forms
-require("dotenv").config()   
+require("dotenv").config();
+require("pg"); 
 
 
 // +++ Database connection code
