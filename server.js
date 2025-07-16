@@ -34,12 +34,12 @@ require("pg");
 // +++ TODO: Remember to add your Neon.tech connection variables to the .env file!!
 const { Sequelize, DataTypes } = require("sequelize");
 
-console.log("VERCEL_DATABASE_URL:", process.env.DATABASE_URL);
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
   dialectOptions: {
     ssl: {
+      require: true,
       rejectUnauthorized: false,
     },
   },
