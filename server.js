@@ -30,8 +30,6 @@ require("dotenv").config();
 require("pg"); 
 
 
-// +++ Database connection code
-// +++ TODO: Remember to add your Neon.tech connection variables to the .env file!!
 const { Sequelize, DataTypes } = require("sequelize");
 
 
@@ -45,7 +43,6 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
   },
 });
 
-// +++  4. TODO: Define your database table
 const Location = sequelize.define('Location', {
   name: {
     type: DataTypes.TEXT,
@@ -72,9 +69,6 @@ const Location = sequelize.define('Location', {
 });
 
 
-
-// +++ 5. TODO: Define your server routes
-// GET route for the home page 
 app.get("/", async (req, res) => {
     try {
         const locations = await Location.findAll({ raw: true });
@@ -100,7 +94,6 @@ app.post("/memories/add", async (req, res) => {
     }
 });
 
-// GET route to delete a location 
 app.get("/memories/delete/:id", async (req, res) => {
     try {
         await Location.destroy({
@@ -113,7 +106,6 @@ app.get("/memories/delete/:id", async (req, res) => {
     }
 });
 
-// +++  Function to start serer
 async function startServer() {
     try {
         await sequelize.sync();
