@@ -19,7 +19,7 @@
 
 
 
-const HTTP_PORT = process.env.PORT || 8080;
+//const HTTP_PORT = process.env.PORT || 8080;
 
 const express = require("express");
 const app = express();
@@ -107,23 +107,14 @@ app.get("/memories/delete/:id", async (req, res) => {
     }
 });
 
-async function startServer() {
-    try {
-        await sequelize.sync();
-        console.log("SUCCESS connecting to database and syncing model.");
+sequelize.sync().then(() => {
+    console.log("Database synced successfully.");
+}).catch(err => {
+    console.error("Error syncing database:", err);
+});
 
-        app.listen(HTTP_PORT, () => {
-            console.log(`server listening on: http://localhost:${HTTP_PORT}`);
-        });
-    }
-    catch (err) {
-        console.log("ERROR connecting to database");
-        console.log(err);
-        console.log("Please resolve these errors and try again.");
-    }
-}
-
-startServer()
+// Export the app for Vercel's serverless environment
+module.exports = app;
 
 
 
