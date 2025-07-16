@@ -32,6 +32,7 @@ require("pg");
 
 const { Sequelize, DataTypes } = require("sequelize");
 
+console.log("Value of DATABASE_URL:", process.env.DATABASE_URL);
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: 'postgres',
